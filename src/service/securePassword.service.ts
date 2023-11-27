@@ -4,11 +4,11 @@ import securePasswordService from 'src/interfaces/securePasswordService';
 class SecurePasswordService implements securePasswordService {
   private errors = new Set<Errors>();
 
-  validateLength(passwod: string) {
+  private validateLength(passwod: string) {
     passwod.length <= 8 && this.errors.add(Errors.MIN_ERROR);
   }
 
-  validateSpecialCharacters(passwod: string) {
+  private validateSpecialCharacters(passwod: string) {
     const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
     !passwod.match(specialCharacters) &&
