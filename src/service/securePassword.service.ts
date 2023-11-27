@@ -1,7 +1,7 @@
 import Errors from '../enum/erros';
-import securePassword from 'src/interfaces/securePassword';
+import securePasswordService from 'src/interfaces/securePasswordService';
 
-class SecurePasswordService implements securePassword {
+class SecurePasswordService implements securePasswordService {
   private errors = new Set<Errors>();
 
   validateLength(passwod: string) {
@@ -9,8 +9,16 @@ class SecurePasswordService implements securePassword {
     return false;
   }
 
+  validateSpecialCharacters(passwod: string) {
+    const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+    !passwod.match(specialCharacters) &&
+      this.errors.add(Errors.SPECIAL_CHARACTERS_ERROR);
+  }
+
   verifyPassword(password: string) {
     this.validateLength(password);
+    this.validateSpecialCharacters(password);
     return this.errors;
   }
 }
