@@ -9,4 +9,10 @@ describe('Secure Password Service Test', () => {
     const errorMessage = sut.verifyPassword(password);
     expect(errorMessage).toContain(Errors.MIN_ERROR);
   });
+
+  it('Should return error if the password not contains at least one special character', () => {
+    const password = 'loremipsum';
+    const errorMessage = sut.verifyPassword(password);
+    expect(errorMessage).toContain(Errors.SPECIAL_CHARACTERS_ERROR);
+  });
 });
