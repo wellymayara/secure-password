@@ -1,7 +1,7 @@
 import Errors from 'src/enum/erros';
 
-interface securePasswordService {
-  verifyPassword: (passwod: string) => Set<Errors>;
+interface ISecurePasswordService {
+  validatePassword: (passwod: string) => Set<Errors>;
 }
 
-export default securePasswordService;
+export default ISecurePasswordService;

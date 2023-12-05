@@ -1,15 +1,17 @@
-class securePassword {
-  private password: string;
+class SecurePassword {
+  private _password: string;
 
   constructor(password: string) {
-    this.password = password;
+    this._password = password;
   }
 
-  getPassword() {
-    return this.password;
+  get password() {
+    return this._password;
   }
 
-  setPassword(password: string) {
-    this.password = password;
+  set password(password: string) {
+    this._password = password;
   }
 }
+
+export default SecurePassword;
